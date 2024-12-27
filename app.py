@@ -6,7 +6,7 @@ import os
 from huggingface_hub import login
 
 # Authenticate with Hugging Face if token is available
-hf_token = os.getenv("HUGGINGFACE_HUB_TOKEN")
+hf_token = os.getenv("HUGGINGFACE_TOKEN")
 if hf_token:
     login(token=hf_token)
 
