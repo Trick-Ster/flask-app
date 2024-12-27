@@ -3,9 +3,15 @@ from flask import Flask, request, jsonify
 from transformers import AutoModelForSequenceClassification, AutoTokenizer
 import torch
 import os  # Import os to access environment variables
+from huggingface_hub import login  # Import login function
 
 # Initialize Flask app
 app = Flask(__name__)
+
+# Log in to Hugging Face using the access token from environment variable
+huggingface_token = os.getenv("HUGGINGFACE_TOKEN")
+if huggingface_token:
+    login(token=huggingface_token)  # Authenticate with Hugging Face
 
 # Load the model and tokenizer from Hugging Face
 model_name = "mistralai/Mistral-Nemo-Instruct-2407"  # You can replace this with another NeMo model
